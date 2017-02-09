@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/retry';
@@ -9,10 +9,14 @@ import { Book } from './book';
 @Injectable()
 export class BookStoreService {
 
-  constructor(private http: Http) { }
+  headers: Headers = new Headers();
+
+  constructor(private http: Http) {
+    this.headers.append('Content-Type', 'application/json');
+  }
 
   getAll(): Observable<Book[]> {
-    return this.http.get('https://book-monkey2-api.angular-buch.com/books')
+    return this.http.get('http://book-monkey2-api.angular-buch.com/books')
       .retry(3)
       .map(res => res.json())
       .map(rawBooks => rawBooks
@@ -23,7 +27,7 @@ export class BookStoreService {
   }
 
   getSingle(isbn: string): Observable<Book> {
-    console.log(`https://book-monkey2-api.angular-buch.com/book/${isbn}`);
+    console.log(`http://book-monkey2-api.angular-buch.com/book/${isbn}`);
 
     return this.http.get(`https://book-monkey2-api.angular-buch.com/book/${isbn}`)
       .retry(3)
@@ -31,6 +35,14 @@ export class BookStoreService {
       .map(raw =>
         new Book(raw.isbn, raw.title, raw.description, raw.rating)
       );
+  }
+
+  createBook(book: Book): Observable<any> {
+    return this.http.post(
+      'http://book-monkey2-api.angular-buch.com/book',
+      JSON.stringify(book),
+      { headers: this.headers }
+    );
   }
 
 

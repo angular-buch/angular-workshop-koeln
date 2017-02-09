@@ -1,0 +1,28 @@
+<p>
+  book-form works!
+</p>
+
+<form #myForm="ngForm" (submit)="submitForm()">
+
+ISBN:<br>
+<input type="text" name="isbn" required minlength="10" maxlength="13" [(ngModel)]="book.isbn"><br>
+{{ myForm.controls.isbn.errors }}
+
+
+Titel:<br>
+<input type="text" name="title" required [(ngModel)]="book.title"><br>
+
+Beschreibung:<br>
+<input type="text" name="description" required [(ngModel)]="book.description"><br>
+
+Rating:<br>
+<input type="text" name="rating" required [(ngModel)]="book.rating"><br>
+
+<button [disabled]="!myForm.valid" type="submit">Absenden</button>
+
+</form>
+
+<button (click)="logme()">Log me</button>
+
+
+{{ book | json }}
