@@ -1,0 +1,22 @@
+<h1>Details zu <i>{{ book?.title }}</i></h1>
+
+<table class="table">
+  <tr>
+    <td><b>Titel</b></td>
+    <td>{{ book?.title }}</td>
+  </tr>
+  <tr>
+    <td><b>Beschreibung</b></td>
+    <td>{{ book?.description }}</td>
+  </tr>
+  <tr>
+    <td><b>Bewertung</b></td>
+    <td>{{ book?.rating }}</td>
+  </tr>
+  <tr>
+    <td><b>ISBN</b></td>
+    <td>{{ book?.isbn }}</td>
+  </tr>
+</table>
+
+<a routerLink="/books/dashboard" class="btn btn-default">Zurück</a>

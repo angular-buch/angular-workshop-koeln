@@ -23,6 +23,8 @@ export class BookStoreService {
   }
 
   getSingle(isbn: string): Observable<Book> {
+    console.log(`https://book-monkey2-api.angular-buch.com/book/${isbn}`);
+
     return this.http.get(`https://book-monkey2-api.angular-buch.com/book/${isbn}`)
       .retry(3)
       .map(res => res.json())

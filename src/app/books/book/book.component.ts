@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { Book } from '../shared/book';
+import { Book } from '../../shared/book';
 
 @Component({
   selector: 'br-book',
