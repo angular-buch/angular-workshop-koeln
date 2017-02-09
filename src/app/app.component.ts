@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'br-root',
@@ -6,12 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'yolo foobar!';
+  title = 'Bücher';
 
   constructor() {
-    setTimeout(
-      () => this.title = 'asynchroner Text',
-      1000
-    );
   }
 }
