@@ -1,3 +1,8 @@
-<ul>
-  <li *ngFor="let b of books">{{ b }}</li>
-</ul>
+<br-book (rated)="reorderBooks($event)" [book]="b" *ngFor="let b of books"></br-book>
+
+<hr>
+<strong>Anzahl Bücher:</strong> {{ books.length }}
+
+<div *ngIf="books.length == 2">
+Es sind genau 2 Bücher vorhanden.
+</div>

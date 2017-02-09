@@ -1,0 +1,8 @@
+<div class="well">
+  <h2>{{ book.title }} <small>Stars: {{ book.rating }}</small></h2>
+  <p>{{ book.description }}</p>
+
+  <button (click)="rateUpX()" class="btn btn-default glyphicon glyphicon-thumbs-up"></button>
+  <button (click)="rateDownX()" class="btn btn-default glyphicon glyphicon-thumbs-down"></button>
+
+</div>
